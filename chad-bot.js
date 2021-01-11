@@ -8,8 +8,7 @@ const {
 } = require('os');
 const bot = new Discord.Client();
 const prefix = 'chad';
-const tk = 'Nzg1MDMyMTM2MjgwNzY4NTEy.X8x8Jg.cQqfI19iYknEAod2deXzmRLV-24';
-
+const tk = process.env.NOTHING_SPECIAL;
 const polls_id = '785057197960593408';
 const a = '785061567434981407';
 const b = '785061577803169814';

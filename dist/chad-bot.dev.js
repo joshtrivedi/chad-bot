@@ -13,7 +13,7 @@ var _require3 = require('os'),
 
 var bot = new Discord.Client();
 var prefix = 'chad';
-var tk = 'Nzg1MDMyMTM2MjgwNzY4NTEy.X8x8Jg.cQqfI19iYknEAod2deXzmRLV-24';
+var tk = process.env.NOTHING_SPECIAL;
 var polls_id = '785057197960593408';
 var a = '785061567434981407';
 var b = '785061577803169814';
