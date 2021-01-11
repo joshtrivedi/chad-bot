@@ -23,7 +23,6 @@ var anon_react = require('./anon-react');
 bot.on('ready', () => {
     console.log('This bot is working');
     polls(bot);
-    booster(bot);
     anon(bot);
     reaction_role(bot);
     anon_react(bot);
