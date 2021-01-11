@@ -13,7 +13,6 @@ module.exports = (client) => {
             msg.react('👍');
             msg.react('👎');
         }
-        //console.log(content);
     })
     client.on('messageReactionAdd', (MessageReaction, user) =>{
         if(MessageReaction.emoji.name === '👍' ){
