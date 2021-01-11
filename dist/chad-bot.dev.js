@@ -35,7 +35,6 @@ var anon_react = require('./anon-react');
 bot.on('ready', function () {
   console.log('This bot is working');
   polls(bot);
-  booster(bot);
   anon(bot);
   reaction_role(bot);
   anon_react(bot);
@@ -84,13 +83,4 @@ bot.on('message', function (msg) {
     }
   }
 });
-/*bot.on('nitroBoost' , (booster)=>{
-    bot.channels.get('785042648511021057').send(`${booster} boosted the server`)
-    if(booster.roles.has('784976884353728512')){
-        bot.channels.get('785042648511021057').send('tag found');
-    }else{
-        bot.channels.get('785042648511021057').send('tag not found');
-    }
-})*/
-
 bot.login(tk);

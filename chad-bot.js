@@ -67,15 +67,6 @@ bot.on('message', msg => {
     }
 })
 
-/*bot.on('nitroBoost' , (booster)=>{
-    bot.channels.get('785042648511021057').send(`${booster} boosted the server`)
-    if(booster.roles.has('784976884353728512')){
-        bot.channels.get('785042648511021057').send('tag found');
-    }else{
-        bot.channels.get('785042648511021057').send('tag not found');
-    }
-})*/
-
 
 
 bot.login(tk);
