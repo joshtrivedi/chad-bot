@@ -37,6 +37,10 @@ random_responses[2] = "disturb me another time, I'm trying to shave my balls";
 random_responses[3] = "yo wuz good dawg";
 random_responses[4] = "idk ask pras, he likes being a `know it all`";
 random_responses[5] = "and you expect me to answer that?";
+random_responses[6] = "i am no yesbot and josh is no jamie stfu";
+random_responses[7] = "who hath summoned me";
+random_responses[8] = "i know this is pretty lame but cmon, im a bot what can you expect";
+random_responses[9] = "did saaim finally turn 18? oop thought so";
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
