@@ -20,8 +20,6 @@ var b = '785061577803169814';
 
 var polls = require('./polls');
 
-var reaction_role = require('./reaction-roles');
-
 var F = '785180507846869032';
 var testmessage_id = '785113963430936586';
 var chadchannel = '792527126511353866';

@@ -13,7 +13,6 @@ const polls_id = '785057197960593408';
 const a = '785061567434981407';
 const b = '785061577803169814';
 const polls = require('./polls');
-const reaction_role = require('./reaction-roles');
 var F = '785180507846869032';
 var testmessage_id = '785113963430936586';
 var chadchannel = '792527126511353866';
