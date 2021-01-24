@@ -20,12 +20,21 @@ var chadchannel = '792527126511353866';
 var anon = require('./anon-response');
 var booster = require('./booster');
 var anon_react = require('./anon-react');
+var random_responses = Array();
+random_responses[0] = "don't @ me rn I'm sliding in some dms" 
+random_responses[1] = "I have no idea what you're talking about"
+random_responses[2] = "disturb me another time, I'm trying to shave my balls" 
+random_responses[3] = "yo wuz good dawg"
+random_responses[4] = "idk ask pras, he likes being a `know it all`"
+random_responses[5] = "and you expect me to answer that?"
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
 bot.on('ready', () => {
     console.log('This bot is working');
     polls(bot);
-    anon(bot);
-    reaction_role(bot);
-    anon_react(bot);
 })
 
 bot.on('message', msg => {
@@ -35,7 +44,6 @@ bot.on('message', msg => {
     if (msg.content.startsWith(prefix)) {
         const args = msg.content.slice(prefix.length + 1).split(/ +/);
         const command = args.shift().toLowerCase().trim();
-        //console.log(command);
         if (command == 'ping') {
             msg.channel.send('yes');
         }
@@ -45,24 +53,12 @@ bot.on('message', msg => {
         if (command == 'simp') {
             msg.channel.send('<:nou:776223420975284274>');
         }
-        if (command == 'hi') {
-            msg.channel.send('yes');
-        }
-        if (command == 'f'){
-            msg.delete();
-            msg.reply('🇫');
-        }
         if (command == 'advice'){
-            msg.delete();
-            msg.channel.send("don't be a bitch");
+            msg.channel.send("don   't be a bitch");
         }
-        if (command == 'pack'){
-            msg.delete();
-            msg.channel.send("we pack our bags and leave");
-        }
-        if (command == 'p'){
-            msg.delete();
-            msg.channel.send("sup fuckers, whachu gon do, ban me?");
+        if (command == '' || command == 'hi'){
+            var x = getRandomInt(random_responses.length)
+            msg.channel.send(random_responses[x])
         }
     }
 })

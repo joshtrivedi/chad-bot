@@ -1,6 +1,6 @@
 "use strict";
 
-var channels = ['776161181681451028'];
+var channels = ['792527126511353866'];
 
 module.exports = function (client) {
   client.on('message', function (msg) {

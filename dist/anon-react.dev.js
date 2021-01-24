@@ -17,8 +17,7 @@ module.exports = function (client) {
     if (msg.author.id === chad_id) {
       msg.react('👍');
       msg.react('👎');
-    } //console.log(content);
-
+    }
   });
   client.on('messageReactionAdd', function (MessageReaction, user) {
     if (MessageReaction.emoji.name === '👍') {
