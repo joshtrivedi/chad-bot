@@ -82,4 +82,4 @@ bot.on('message', function (msg) {
     }
   }
 });
-bot.login('tk');
+bot.login(tk);
