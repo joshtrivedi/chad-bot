@@ -70,4 +70,4 @@ bot.on('message', msg => {
 
 
 
-bot.login(tk);
+bot.login('Nzg1MDMyMTM2MjgwNzY4NTEy.X8x8Jg.mKZHGflMvyg1P8AEF_dEiJNUd2w');
