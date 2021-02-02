@@ -14,12 +14,16 @@ module.exports = function (client) {
       return;
     }
 
-    if (msg.author.id === sneha_id || msg.author.id === josh_id) {
-      if (msg.content.toLowerCase().includes === "hi") {
-        if (msg.content.toLowerCase().split(' ').includes("josh")) {
-          msg.channel.send("done");
-        }
-      }
+    if (msg.author.id === sneha_id && msg.content.toLowerCase() === "hi josh") {
+      msg.reply("I'm sure he's supposed to say Hi Sneha");
+    }
+
+    if (msg.author.id === josh_id && msg.content === "hi sneha") {
+      msg.reply("capital S josh...");
+    }
+
+    if (msg.author.id === josh_id && msg.content === "hi Sneha") {
+      msg.reply("that's much better, hi Jo-, wait I'm not Sneha");
     }
   });
 };
