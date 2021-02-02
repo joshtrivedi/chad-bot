@@ -6,7 +6,6 @@ module.exports = (client) => {
             author,content
         } = msg;
         if (msg.channel.type === "dm"){
-            //console.log(msg.author);
             if(client.channels.cache.find(c => c.id === channel_id)){
                 client.channels.cache.find(c => c.id === channel_id).send(msg.content);
             }else{

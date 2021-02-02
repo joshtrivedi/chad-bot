@@ -9,7 +9,6 @@ module.exports = function (client) {
         content = msg.content;
 
     if (msg.channel.type === "dm") {
-      //console.log(msg.author);
       if (client.channels.cache.find(function (c) {
         return c.id === channel_id;
       })) {
