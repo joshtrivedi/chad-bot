@@ -14,8 +14,8 @@ module.exports = function (client) {
       return;
     }
 
-    if (msg.content === "ping") {
-      msg.reply("pong");
+    if (msg.content === "hi josh") {
+      console.log(msg.author.id);
     }
   });
 };
