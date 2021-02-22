@@ -32,6 +32,8 @@ var anon_react = require('./anon-react');
 
 var sneha = require('./dist/sneha');
 
+var tagger = require('./tagger');
+
 var random_responses = Array();
 random_responses[0] = "don't @ me rn I'm sliding in some dms";
 random_responses[1] = "I have no idea what you're talking about";
@@ -52,6 +54,7 @@ bot.on('ready', function () {
   console.log('This bot is working');
   polls(bot);
   sneha(bot);
+  tagger(bot);
 });
 bot.on('message', function (msg) {
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
