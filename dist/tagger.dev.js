@@ -17,7 +17,7 @@ module.exports = function (client) {
     }
 
     if (msg.member.roles.cache.find(function (r) {
-      return r.name === "MegaSimp";
+      return r.name === "Boys";
     })) {
       if (msg.content.toLowerCase().includes("!poop add")) {
         console.log("hello");

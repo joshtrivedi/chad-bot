@@ -10,7 +10,7 @@ module.exports = (client) => {
         if(!channels.includes(channel.id)){
             return;
         }
-        if(msg.member.roles.cache.find(r => r.name === "MegaSimp")){
+        if(msg.member.roles.cache.find(r => r.name === "Boys")){
             if(msg.content.toLowerCase().includes("!poop add")){
                 console.log("hello")
                 var txt = msg.content.toLowerCase();
