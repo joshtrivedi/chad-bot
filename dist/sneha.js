@@ -11,7 +11,7 @@ module.exports = (client) => {
         }
         if(msg.content.toLowerCase() === "hi josh"){
             if(msg.author.id === sneha_id){
-                msg.reply("I think he is supposed to say Hi Sneha rn, cmon <@`{675120965314805760}`> do it");
+                msg.reply("I think he is supposed to say Hi Sneha rn, cmon <@!675120965314805760> do it");
             }else{
                 msg.reply("i think that is reserved just for Sneha to say");
             }
@@ -23,7 +23,7 @@ module.exports = (client) => {
         }
         if(msg.content === "hi Sneha" || msg.content === "Hi Sneha"){
             if(msg.author.id === josh_id){
-            msg.reply("That's better now Hi J-, wait I am not Sneha tf <@728195817558638692> come here please");
+            msg.reply("That's better now Hi J-, wait I am not Sneha tf <@!"+sneha_id+"> come here please");
             }else{
                 msg.reply("can't say that to yourself wyd");
             }

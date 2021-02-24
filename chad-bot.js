@@ -61,7 +61,7 @@ bot.on('message', msg => {
             msg.channel.send('<:nou:776223420975284274>');
         }
         if (command == 'advice'){
-            msg.channel.send("don   't be a bitch");
+            msg.channel.send("don't be a bitch");
         }
         if (command == '' || command == 'hi'){
             var x = getRandomInt(random_responses.length)

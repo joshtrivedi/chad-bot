@@ -76,7 +76,7 @@ bot.on('message', function (msg) {
     }
 
     if (command == 'advice') {
-      msg.channel.send("don   't be a bitch");
+      msg.channel.send("don't be a bitch");
     }
 
     if (command == '' || command == 'hi') {
