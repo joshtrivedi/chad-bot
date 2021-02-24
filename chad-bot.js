@@ -42,6 +42,7 @@ bot.on('ready', () => {
     polls(bot);
     sneha(bot);
     tagger(bot);
+    anon(bot);
     anon_react(bot);
 })
 
