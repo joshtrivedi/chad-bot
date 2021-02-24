@@ -1,6 +1,6 @@
 "use strict";
 
-var channels = ['792527126511353866'];
+var channels = ['792527126511353866', '776169814980821052'];
 var chad_id = '785032136280768512';
 var recieving_channel = '785113963430936586';
 
