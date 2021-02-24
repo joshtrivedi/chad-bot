@@ -70,9 +70,6 @@ bot.on('message', msg => {
             var x = getRandomInt(random_responses.length)
             msg.channel.send(random_responses[x])
         }
-        if ((msg.author.id === josh_id) && (command == 'who is it')){
-            msg.channel.send("Sneha, the one and only")
-        }
     }
 })
 
