@@ -12,6 +12,7 @@ var _require3 = require('os'),
     userInfo = _require3.userInfo;
 
 var bot = new Discord.Client();
+var josh_id = '675120965314805760';
 var prefix = 'chad';
 var tk = process.env.NOTHING_SPECIAL;
 var polls_id = '785057197960593408';
@@ -84,6 +85,10 @@ bot.on('message', function (msg) {
     if (command == '' || command == 'hi') {
       var x = getRandomInt(random_responses.length);
       msg.channel.send(random_responses[x]);
+    }
+
+    if (msg.author.id === josh_id && command == 'who is it') {
+      msg.channel.send("Sneha, the one and only");
     }
   }
 });

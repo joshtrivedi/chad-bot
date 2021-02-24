@@ -7,6 +7,7 @@ const {
     userInfo
 } = require('os');
 const bot = new Discord.Client();
+const josh_id = '675120965314805760';
 const prefix = 'chad';
 const tk = process.env.NOTHING_SPECIAL;
 const polls_id = '785057197960593408';
@@ -68,6 +69,9 @@ bot.on('message', msg => {
         if (command == '' || command == 'hi'){
             var x = getRandomInt(random_responses.length)
             msg.channel.send(random_responses[x])
+        }
+        if ((msg.author.id === josh_id) && (command == 'who is it')){
+            msg.channel.send("Sneha, the one and only")
         }
     }
 })
