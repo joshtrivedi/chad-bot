@@ -55,6 +55,7 @@ bot.on('ready', function () {
   polls(bot);
   sneha(bot);
   tagger(bot);
+  anon_react(bot);
 });
 bot.on('message', function (msg) {
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
