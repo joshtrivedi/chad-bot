@@ -35,5 +35,9 @@ module.exports = function (client) {
         msg.reply("can't say that to yourself wyd");
       }
     }
+
+    if (msg.author.id === josh_id && msg.content == 'who is it') {
+      msg.channel.send("Sneha, the one and only");
+    }
   });
 };
