@@ -55,8 +55,6 @@ bot.on('ready', function () {
   console.log('This bot is working');
   polls(bot);
   tagger(bot);
-  anon(bot);
-  anon_react(bot);
 });
 bot.on('message', function (msg) {
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;

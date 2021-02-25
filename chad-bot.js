@@ -43,8 +43,6 @@ bot.on('ready', () => {
     polls(bot);
     
     tagger(bot);
-    anon(bot);
-    anon_react(bot);
 })
 
 bot.on('message', msg => {
