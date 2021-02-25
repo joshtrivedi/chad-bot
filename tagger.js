@@ -12,7 +12,7 @@ module.exports = (client) => {
         }
         if(msg.member.roles.cache.find(r => r.name === "Boys")){
             if(msg.content.toLowerCase().includes("!poop add")){
-                console.log("hello")
+                //console.log("hello")
                 var txt = msg.content.toLowerCase();
                 user_id = "<@!"+msg.content.substring(txt.indexOf("<@!")+3,txt.indexOf(">"))+">"
                 
@@ -31,7 +31,7 @@ module.exports = (client) => {
                 }
             }
         }else{
-            console.log('nope')
+            //console.log('nope')
         }
     })
 }
