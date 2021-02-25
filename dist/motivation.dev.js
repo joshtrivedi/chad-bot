@@ -1,6 +1,6 @@
 "use strict";
 
-var channels = ['792527126511353866', '776169814980821052'];
+var channels = ['792527126511353866', '776169814980821052', '785163216262791229'];
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
