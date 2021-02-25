@@ -20,7 +20,7 @@ module.exports = function (client) {
       return r.name === "Boys";
     })) {
       if (msg.content.toLowerCase().includes("!poop add")) {
-        console.log("hello");
+        //console.log("hello")
         var txt = msg.content.toLowerCase();
         user_id = "<@!" + msg.content.substring(txt.indexOf("<@!") + 3, txt.indexOf(">")) + ">";
 
@@ -41,8 +41,7 @@ module.exports = function (client) {
           console.log(e);
         }
       }
-    } else {
-      console.log('nope');
+    } else {//console.log('nope')
     }
   });
 };
