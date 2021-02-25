@@ -41,7 +41,7 @@ function getRandomInt(max) {
 bot.on('ready', () => {
     console.log('This bot is working');
     polls(bot);
-    sneha(bot);
+    
     tagger(bot);
     anon(bot);
     anon_react(bot);
