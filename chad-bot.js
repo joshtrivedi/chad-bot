@@ -33,6 +33,11 @@ random_responses[6] = "i am no yesbot and josh is no jamie stfu"
 random_responses[7] = "who hath summoned me"
 random_responses[8] = "i know this is pretty lame but cmon, im a bot what can you expect"
 random_responses[9] = "did saaim finally turn 18? oop thought so"
+random_responses[10] = "which one of the kings summoned me?"
+random_responses[11] = "can you ask yesbot, i am kinda busy"
+random_responses[12] = "istg if it's another request for that goddamn anon chat-"
+random_responses[13] = "if any one of you is free and good with JS maybe you can try helping my dad out"
+
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
