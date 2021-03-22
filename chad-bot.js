@@ -1,44 +1,22 @@
-const { O_TRUNC } = require('constants');
 const Discord = require('discord.js');
-const {
-    EOF
-} = require('dns');
-const {
-    userInfo
-} = require('os');
+
+const dotenv = require('dotenv')
+dotenv.config()
 const bot = new Discord.Client();
-const josh_id = '675120965314805760';
-const prefix = 'chad';
 const tk = process.env.NOTHING_SPECIAL;
-const polls_id = '785057197960593408';
-const a = '785061567434981407';
-const b = '785061577803169814';
+const {
+    prefix
+} = require('./config.json')
 const polls = require('./polls');
 var F = '785180507846869032';
-var testmessage_id = '785113963430936586';
-var chadchannel = '792527126511353866';
-var anon = require('./anon-response');
-var booster = require('./booster');
-var anon_react = require('./anon-react');
-const sneha = require('./dist/sneha');
-const tagger = require('./tagger');
-const motivation = require('./motivation');
-var random_responses = Array();
-random_responses[0] = "don't @ me rn I'm sliding in some dms" 
-random_responses[1] = "I have no idea what you're talking about"
-random_responses[2] = "disturb me another time, I'm trying to shave my balls" 
-random_responses[3] = "yo wuz good dawg"
-random_responses[4] = "idk ask pras, he likes being a `know it all`"
-random_responses[5] = "and you expect me to answer that?"
-random_responses[6] = "i am no yesbot and josh is no jamie stfu"
-random_responses[7] = "who hath summoned me"
-random_responses[8] = "i know this is pretty lame but cmon, im a bot what can you expect"
-random_responses[9] = "did saaim finally turn 18? oop thought so"
-random_responses[10] = "which one of the kings summoned me?"
-random_responses[11] = "can you ask yesbot, i am kinda busy"
-random_responses[12] = "istg if it's another request for that goddamn anon chat-"
-random_responses[13] = "if any one of you is free and good with JS maybe you can try helping my dad out"
 
+const fs = require('fs')
+bot.commands = new Discord.Collection();
+const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`)
+    bot.commands.set(command.name, command);
+}
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -46,37 +24,61 @@ function getRandomInt(max) {
 
 bot.on('ready', () => {
     console.log('This bot is working');
-    polls(bot);
-    motivation(bot);
-    tagger(bot);
+    polls(bot)
 })
 
 bot.on('message', msg => {
 
+    if (msg.content.toLowerCase() === 'f') return msg.reply('🇫')
     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
-
-    if (msg.content.startsWith(prefix)) {
-        const args = msg.content.slice(prefix.length + 1).split(/ +/);
-        const command = args.shift().toLowerCase().trim();
-        if (command == 'ping') {
-            msg.channel.send('yes');
+    const args = msg.content.slice(prefix.length).split(/ +/)
+    const command = args.shift().toLowerCase()
+    if (command === 'ping') {
+        bot.commands.get('ping').execute(msg)
+    } else if (command === 'help' || command === 'commands') {
+        const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
+        if (args[0] === 'filter') {
+            switch (args[1]) {
+                case 'name':
+                    msg.channel.send('Do !commands and you will find the name of all commands')
+                    break;
+                case 'access':
+                    let filtered_everyone = '**Commands accessible to everyone:** \n'
+                    let filtered_mods = '**Commands accessible to mods:** \n'
+                    for (const file of commandFiles) {
+                        const command = require(`./commands/${file}`)
+                        if (command.access === 'everyone') {
+                            filtered_everyone += ("`" + command.name + " `: " + command.description + "\n")
+                        } else if (command.access === 'moderators') {
+                            filtered_mods += ("`" + command.name + " `: " + command.description + "\n")
+                        }
+                    }
+                    msg.channel.send(filtered_everyone)
+                    msg.channel.send(filtered_mods)
+                    break;
+                default:
+                    msg.channel.send('wrong arguments, please enter either `!commands filter name` or `!commands filter access`')
+                    break;
+            }
+            return
         }
-        if (command == 'commands') {
-            msg.channel.send('find out yourself im busy');
+        let noOfCommands = "Available commands: \n"
+        for (const file of commandFiles) {
+            const command = require(`./commands/${file}`)
+            noOfCommands += (command.name + " : " + command.description + " : ` access : " + command.access + "`\n")
         }
-        if (command == 'simp') {
-            msg.channel.send('<:nou:776223420975284274>');
-        }
-        if (command == 'advice'){
-            msg.channel.send("don't be a bitch");
-        }
-        if (command == '' || command == 'hi'){
-            var x = getRandomInt(random_responses.length)
-            msg.channel.send(random_responses[x])
-        }
+        msg.channel.send(noOfCommands)
+    } else if (command === 'purge') {
+        bot.commands.get('purge').execute(msg, args)
+    } else if (command === 'mute') {
+        bot.commands.get('mute').execute(msg, args)
+    } else if (command === 'ban') {
+        bot.commands.get('ban').execute(bot, msg, args)
+    } else if (command === 'compliment') {
+        bot.commands.get('compliment').execute(msg, args)
+    } else if (command === 'mv' || command === 'motivation') {
+        bot.commands.get('motivation').execute(msg, args)
     }
 })
-
-
 
 bot.login(tk);
