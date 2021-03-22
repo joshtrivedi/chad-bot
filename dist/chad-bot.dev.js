@@ -1,57 +1,52 @@
 "use strict";
 
-var _require = require('constants'),
-    O_TRUNC = _require.O_TRUNC;
-
 var Discord = require('discord.js');
 
-var _require2 = require('dns'),
-    EOF = _require2.EOF;
+var dotenv = require('dotenv');
 
-var _require3 = require('os'),
-    userInfo = _require3.userInfo;
-
+dotenv.config();
 var bot = new Discord.Client();
-var josh_id = '675120965314805760';
-var prefix = 'chad';
 var tk = process.env.NOTHING_SPECIAL;
-var polls_id = '785057197960593408';
-var a = '785061567434981407';
-var b = '785061577803169814';
+
+var _require = require('./config.json'),
+    prefix = _require.prefix;
 
 var polls = require('./polls');
 
 var F = '785180507846869032';
-var testmessage_id = '785113963430936586';
-var chadchannel = '792527126511353866';
 
-var anon = require('./anon-response');
+var fs = require('fs');
 
-var booster = require('./booster');
+bot.commands = new Discord.Collection();
+var commandFiles = fs.readdirSync('./commands/').filter(function (file) {
+  return file.endsWith('.js');
+});
+var _iteratorNormalCompletion = true;
+var _didIteratorError = false;
+var _iteratorError = undefined;
 
-var anon_react = require('./anon-react');
+try {
+  for (var _iterator = commandFiles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+    var file = _step.value;
 
-var sneha = require('./dist/sneha');
+    var command = require("./commands/".concat(file));
 
-var tagger = require('./tagger');
-
-var motivation = require('./motivation');
-
-var random_responses = Array();
-random_responses[0] = "don't @ me rn I'm sliding in some dms";
-random_responses[1] = "I have no idea what you're talking about";
-random_responses[2] = "disturb me another time, I'm trying to shave my balls";
-random_responses[3] = "yo wuz good dawg";
-random_responses[4] = "idk ask pras, he likes being a `know it all`";
-random_responses[5] = "and you expect me to answer that?";
-random_responses[6] = "i am no yesbot and josh is no jamie stfu";
-random_responses[7] = "who hath summoned me";
-random_responses[8] = "i know this is pretty lame but cmon, im a bot what can you expect";
-random_responses[9] = "did saaim finally turn 18? oop thought so";
-random_responses[10] = "which one of the kings summoned me?";
-random_responses[11] = "can you ask yesbot, i am kinda busy";
-random_responses[12] = "istg if it's another request for that goddamn anon chat-";
-random_responses[13] = "if any one of you is free and good with JS maybe you can try helping my dad out";
+    bot.commands.set(command.name, command);
+  }
+} catch (err) {
+  _didIteratorError = true;
+  _iteratorError = err;
+} finally {
+  try {
+    if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+      _iterator["return"]();
+    }
+  } finally {
+    if (_didIteratorError) {
+      throw _iteratorError;
+    }
+  }
+}
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -60,36 +55,111 @@ function getRandomInt(max) {
 bot.on('ready', function () {
   console.log('This bot is working');
   polls(bot);
-  motivation(bot);
-  tagger(bot);
 });
 bot.on('message', function (msg) {
+  if (msg.content.toLowerCase() === 'f') return msg.reply('🇫');
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
+  var args = msg.content.slice(prefix.length).split(/ +/);
+  var command = args.shift().toLowerCase();
 
-  if (msg.content.startsWith(prefix)) {
-    var args = msg.content.slice(prefix.length + 1).split(/ +/);
-    var command = args.shift().toLowerCase().trim();
+  if (command === 'ping') {
+    bot.commands.get('ping').execute(msg);
+  } else if (command === 'help' || command === 'commands') {
+    var _commandFiles = fs.readdirSync('./commands/').filter(function (file) {
+      return file.endsWith('.js');
+    });
 
-    if (command == 'ping') {
-      msg.channel.send('yes');
+    if (args[0] === 'filter') {
+      switch (args[1]) {
+        case 'name':
+          msg.channel.send('Do !commands and you will find the name of all commands');
+          break;
+
+        case 'access':
+          var filtered_everyone = '**Commands accessible to everyone:** \n';
+          var filtered_mods = '**Commands accessible to mods:** \n';
+          var _iteratorNormalCompletion2 = true;
+          var _didIteratorError2 = false;
+          var _iteratorError2 = undefined;
+
+          try {
+            for (var _iterator2 = _commandFiles[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+              var file = _step2.value;
+
+              var _command = require("./commands/".concat(file));
+
+              if (_command.access === 'everyone') {
+                filtered_everyone += "`" + _command.name + " `: " + _command.description + "\n";
+              } else if (_command.access === 'moderators') {
+                filtered_mods += "`" + _command.name + " `: " + _command.description + "\n";
+              }
+            }
+          } catch (err) {
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+                _iterator2["return"]();
+              }
+            } finally {
+              if (_didIteratorError2) {
+                throw _iteratorError2;
+              }
+            }
+          }
+
+          msg.channel.send(filtered_everyone);
+          msg.channel.send(filtered_mods);
+          break;
+
+        default:
+          msg.channel.send('wrong arguments, please enter either `!commands filter name` or `!commands filter access`');
+          break;
+      }
+
+      return;
     }
 
-    if (command == 'commands') {
-      msg.channel.send('find out yourself im busy');
+    var noOfCommands = "Available commands: \n";
+    var _iteratorNormalCompletion3 = true;
+    var _didIteratorError3 = false;
+    var _iteratorError3 = undefined;
+
+    try {
+      for (var _iterator3 = _commandFiles[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+        var _file = _step3.value;
+
+        var _command2 = require("./commands/".concat(_file));
+
+        noOfCommands += _command2.name + " : " + _command2.description + " : ` access : " + _command2.access + "`\n";
+      }
+    } catch (err) {
+      _didIteratorError3 = true;
+      _iteratorError3 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+          _iterator3["return"]();
+        }
+      } finally {
+        if (_didIteratorError3) {
+          throw _iteratorError3;
+        }
+      }
     }
 
-    if (command == 'simp') {
-      msg.channel.send('<:nou:776223420975284274>');
-    }
-
-    if (command == 'advice') {
-      msg.channel.send("don't be a bitch");
-    }
-
-    if (command == '' || command == 'hi') {
-      var x = getRandomInt(random_responses.length);
-      msg.channel.send(random_responses[x]);
-    }
+    msg.channel.send(noOfCommands);
+  } else if (command === 'purge') {
+    bot.commands.get('purge').execute(msg, args);
+  } else if (command === 'mute') {
+    bot.commands.get('mute').execute(msg, args);
+  } else if (command === 'ban') {
+    bot.commands.get('ban').execute(bot, msg, args);
+  } else if (command === 'compliment') {
+    bot.commands.get('compliment').execute(msg, args);
+  } else if (command === 'mv' || command === 'motivation') {
+    bot.commands.get('motivation').execute(msg, args);
   }
 });
 bot.login(tk);
