@@ -1,4 +1,2 @@
 node_modules
-Logger.ts
-tools.ts
-webhooker.js
+.env
