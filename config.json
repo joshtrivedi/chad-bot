@@ -1,0 +1,8 @@
+{
+    "prefix" : "chad ",
+    "moderator_role":["mods"],
+    "member_role":["men"],
+    "timeout_role":["timeout"],
+    "testing_channel":["792527126511353866"],
+    "polls_channel" : ["785057197960593408"]
+}
