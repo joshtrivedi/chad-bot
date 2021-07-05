@@ -78,6 +78,8 @@ bot.on('message', msg => {
         bot.commands.get('compliment').execute(msg, args)
     } else if (command === 'mv' || command === 'motivation') {
         bot.commands.get('motivation').execute(msg, args)
+    } else if (command === 'nofap') {
+        bot.commands.get('nofap').execute(msg)
     }
 })
 
