@@ -27,4 +27,4 @@ module.exports = {
             msg.channel.send('You need to have administrator privileges for that!')
         }
     }
-}
+}   
