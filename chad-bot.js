@@ -9,7 +9,7 @@ const {
 } = require('./config.json')
 const polls = require('./polls');
 var F = '785180507846869032';
-
+const cron = require('cron')
 const fs = require('fs')
 bot.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
@@ -25,7 +25,26 @@ function getRandomInt(max) {
 bot.on('ready', () => {
     console.log('This bot is working');
     polls(bot)
+
+    let scheduledMessage = new cron.CronJob('00 00 00 * * *', () => {
+        const guild = bot.guilds.cache.get('784976368198746175')
+        const channel = guild.channels.cache.get('861228741597593640')
+        channel.send("Hi <@&861228812694847499>, did you make it today?")
+        setTimeout(() => {
+            channel.messages.fetch({ limit: 1 }).then(messages => {
+            let lastMsg = messages.first()
+            if (lastMsg.author.bot) {
+                lastMsg.react('👍')
+                lastMsg.react('👎')
+            }
+        })
+        }, 500);
+        
+    })
+
+    scheduledMessage.start();
 })
+
 
 bot.on('message', msg => {
 
@@ -80,6 +99,15 @@ bot.on('message', msg => {
         bot.commands.get('motivation').execute(msg, args)
     } else if (command === 'nofap') {
         bot.commands.get('nofap').execute(msg)
+    } else if (command === 'time') {
+        var currentdate = new Date();
+        var datetime = "Date Time: " + currentdate.getDate() + "/"
+            + (currentdate.getMonth() + 1) + "/"
+            + currentdate.getFullYear() + " @ "
+            + currentdate.getHours() + ":"
+            + currentdate.getMinutes() + ":"
+            + currentdate.getSeconds();
+        msg.channel.send(datetime)
     }
 })
 
