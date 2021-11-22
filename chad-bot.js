@@ -117,7 +117,7 @@ bot.on('message', msg => {
             + currentdate.getMinutes() + ":"
             + currentdate.getSeconds();
         msg.channel.send(datetime)
-    } else if (command = 'gulugulu'){
+    } else if (command === 'gulugulu'){
         bot.commands.get('gulugulu').execute(msg)
     }
 })
