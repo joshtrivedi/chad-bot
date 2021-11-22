@@ -41,8 +41,17 @@ bot.on('ready', () => {
         }, 500);
         
     })
-
     scheduledMessage.start();
+    let hydrationtimeint = Math.floor(Math.random() * 25);
+    var hydrationtimestr = hydrationtimeint.toString();
+    var cronstr = hydrationtimestr+" 00 00 * * *"
+    let gulugulu = new cron.CronJob(cronstr, () => {
+        const guild = bot.guilds.cache.get('784976368198746175')
+        const channel = guild.channels.cache.get('785163216262791229')
+        channel.send("Hello legends, <@&912412517278564392> It's time to drink some water")
+    })
+    gulugulu.start();
+    
 })
 
 
