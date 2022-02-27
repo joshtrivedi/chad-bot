@@ -10,7 +10,8 @@ const {
 const polls = require('./polls');
 var F = '785180507846869032';
 const cron = require('cron')
-const fs = require('fs')
+const fs = require('fs');
+const something = require('./something');
 bot.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
 for (const file of commandFiles) {
@@ -25,7 +26,6 @@ function getRandomInt(max) {
 bot.on('ready', () => {
     console.log('This bot is working');
     polls(bot)
-
     let scheduledMessage = new cron.CronJob('00 00 00 * * *', () => {
         const guild = bot.guilds.cache.get('784976368198746175')
         const channel = guild.channels.cache.get('861228741597593640')
@@ -119,6 +119,8 @@ bot.on('message', msg => {
         msg.channel.send(datetime)
     } else if (command === 'gulugulu'){
         bot.commands.get('gulugulu').execute(msg)
+    } else if (command === 'pickup'){
+        bot.commands.get('pickup').execute(msg)
     }
 })
 

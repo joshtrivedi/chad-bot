@@ -1,0 +1,106 @@
+[
+    {
+        "char" : "🇦",
+        "name" : "regional_indicator_a"
+    },
+    {
+        "char" : "🇧",
+        "name" : "regional_indicator_b"
+    },
+    {
+        "char" : "🇨",
+        "name" : "regional_indicator_c"
+    },
+    {
+        "char" : "🇩",
+        "name" : "regional_indicator_d"
+    },
+    {
+        "char" : "🇪",
+        "name" : "regional_indicator_e"
+    },
+    {
+        "char" : "🇫",
+        "name" : "regional_indicator_f"
+    },
+    {
+        "char" : "🇬",
+        "name" : "regional_indicator_g"
+    },
+    {
+        "char" : "🇭",
+        "name" : "regional_indicator_h"
+    },
+    {
+        "char" : "🇮",
+        "name" : "regional_indicator_i"
+    },
+    {
+        "char" : "🇯",
+        "name" : "regional_indicator_j"
+    },
+    {
+        "char" : "🇰",
+        "name" : "regional_indicator_k"
+    },
+    {
+        "char" : "🇱",
+        "name" : "regional_indicator_l"
+    },
+    {
+        "char" : "🇲",
+        "name" : "regional_indicator_m"
+    },
+    {
+        "char" : "🇳",
+        "name" : "regional_indicator_n"
+    },
+    {
+        "char" : "🇴",
+        "name" : "regional_indicator_o"
+    },
+    {
+        "char" : "🇵",
+        "name" : "regional_indicator_p"
+    },
+    {
+        "char" : "🇶",
+        "name" : "regional_indicator_q"
+    },
+    {
+        "char" : "🇷",
+        "name" : "regional_indicator_r"
+    },
+    {
+        "char" : "🇸",
+        "name" : "regional_indicator_s"
+    },
+    {
+        "char" : "🇹",
+        "name" : "regional_indicator_t"
+    },
+    {
+        "char" : "🇺",
+        "name" : "regional_indicator_u"
+    },
+    {
+        "char" : "🇻",
+        "name" : "regional_indicator_v"
+    },
+    {
+        "char" : "🇼",
+        "name" : "regional_indicator_w"
+    },
+    {
+        "char" : "🇽",
+        "name" : "regional_indicator_x"
+    },
+    {
+        "char" : "🇾",
+        "name" : "regional_indicator_y"
+    },
+    {
+        "char" : "🇿",
+        "name" : "regional_indicator_z"
+    }
+]
