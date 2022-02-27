@@ -11,7 +11,6 @@ const polls = require('./polls');
 var F = '785180507846869032';
 const cron = require('cron')
 const fs = require('fs');
-const something = require('./something');
 bot.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
 for (const file of commandFiles) {

@@ -4,7 +4,6 @@ const regionals = require('./reg-indicator.json')
 const {
     polls_channel
 } = require('./config.json'); 
-const something = require('./something');
 
 function checkEmoji(args) {
     reg = /<.*>$/
